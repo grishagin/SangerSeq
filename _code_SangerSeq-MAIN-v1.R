@@ -7,7 +7,7 @@
 #(2) sequences
 #(3) experimental sequences aligned with theoretical ones
 
-main.code.folder<-getwd()
+main.code.folder<-"D:\\_\\Templates_and_Scripts\\R\\SangerSeq\\dependencies\\"
 ######################################
 
 #source all functions for auxiliary files
@@ -23,8 +23,8 @@ files.ab1<-list.files(dir.ab1,full.names = TRUE,pattern=".ab1")
 outdir<-paste0(dir.ab1,"\\output")
 dir.create(outdir,showWarnings = FALSE)
 #write chromatograms and DNA sequences
-sapply(files.ab1,FUN=chroma(seqFileName=seqFileName, 
-                            outdir=outdir))
+sapply(files.ab1,FUN=function(seqFileName){chroma(seqFileName=seqFileName, 
+                                                  outdir=outdir)})
 
 #perform pairwise alignment
 #ask for directory with files containing expected/theoretical sequences

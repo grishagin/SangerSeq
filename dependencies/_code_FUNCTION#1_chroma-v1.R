@@ -24,8 +24,16 @@ chroma<-function(seqFileName,
                      showcalls = c("primary", "secondary", "both", "none"), width = 100,
                      height = 2, cex.mtext = 1, cex.base = 1, ylim = 3, filename = chromaFileName,
                      showtrim = FALSE, showhets = TRUE)
+        #sequence to write
+        seqToWrite<-primarySeq(obj = ab1SEQ,string=TRUE)
+        #create file, open for writing
+        fileCon<-file(outFileName,"wb")
         
         #write sequence to a file
-        write(x = primarySeq(obj = ab1SEQ,string=TRUE),file = outFileName)
+        writeChar(object = seqToWrite,
+                  con = fileCon,
+                  nchar=nchar(seqToWrite),
+                  eos=NULL)
+        close(fileCon)
         
 }
